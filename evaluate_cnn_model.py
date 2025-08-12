@@ -247,7 +247,7 @@ from sklearn.preprocessing import MinMaxScaler
 import os
 
 def evaluate_cnn_model(model_path=os.path.join(os.path.dirname(__file__),'spectrum_demand_forecaster_cnn.keras'), 
-                      data_path=r"C:\Academics\Gen AI\spectrum_demand_data\spectrum_demand_5.csv",
+                      data_path=r"spectrum_demand_1.csv",
                       test_size=168):  # One week of hourly data
     try:
         # Configure proper encoding for console output
@@ -470,4 +470,5 @@ def evaluate_cnn_model(model_path=os.path.join(os.path.dirname(__file__),'spectr
         return None, None
 
 if __name__ == "__main__":
+
     metrics, efficiency = evaluate_cnn_model()
