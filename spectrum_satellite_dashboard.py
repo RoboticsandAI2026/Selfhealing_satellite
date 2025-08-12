@@ -18,7 +18,7 @@ st.set_page_config(
 )
 
 # Add SASTRA University logo at the top
-st.image("c:/Academics/Gen AI/sastra_logo.jpg", width=1200)
+st.image("sastra_logo.jpg", width=1200)
 
 # Add title and subheadings
 st.title("SASTRA INSAT : Generative AI-Driven Self-Healing and Adaptive Spectrum Management for Resilient Satellite Communications")
@@ -99,7 +99,7 @@ def load_modules():
     # LSTM Spectrum Allocation
     modules['spectrum_prediction'] = import_module_from_file(
         "make_prediction", 
-        "C:/Academics/Gen AI/LSTM_spectrum_allocation/make_prediction.py"
+        "make_prediction.py"
     )
     
     # Interference Classification - Create a simple implementation
@@ -148,7 +148,7 @@ def load_modules():
                 plt.tight_layout()
                 
                 # Save the plot
-                plot_path = os.path.join("C:/Academics/Gen AI/CNN_interference", "area_priority_score.png")
+                plot_path = os.path.join("CNN_interference", "area_priority_score.png")
                 os.makedirs(os.path.dirname(plot_path), exist_ok=True)
                 plt.savefig(plot_path)
                 plt.close()
@@ -166,19 +166,19 @@ def load_modules():
     # Report Generator
     modules['report_generator'] = import_module_from_file(
         "report_generator", 
-        "C:/Academics/Gen AI/llm_spectrum_report/report_generator.py"
+        "report_generator.py"
     )
     
     # Satellite Image Reconstruction
     modules['satellite_gan'] = import_module_from_file(
         "test_gan", 
-        "C:/Academics/Gen AI/self_healing/test_gan.py"
+        "test_gan.py"
     )
     
     # Satellite Report Generator
     modules['satellite_report'] = import_module_from_file(
         "integration_new", 
-        "C:/Academics/Gen AI/self_healing/llm/integration_new.py"
+        "integration_new.py"
     )
     
     return modules
@@ -228,8 +228,8 @@ with row1_cols[0]:
                 with st.spinner("Predicting spectrum demand..."):
                     # Call the prediction function from LSTM model
                     predictions = modules['spectrum_prediction'].predict_future_demand(
-                        model_path="C:/Academics/Gen AI/LSTM_spectrum_allocation/spectrum_demand_forecaster.keras",
-                        data_path=r"C:\Academics\Gen AI\spectrum_demand_data\spectrum_demand_5.csv",
+                        model_path= r"spectrum_demand_forecaster.keras",
+                        data_path=r"spectrum_demand_1.csv",
                         horizon=min(horizon, 168)  # Limit to 7 days (168 hours)
                     )
                     
@@ -683,4 +683,5 @@ with row2_cols[1]:
 
 # Footer
 st.markdown("---")
+
 st.markdown("© 2025 Spectrum & Satellite Management System")
