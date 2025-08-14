@@ -8,8 +8,7 @@ scikit-image>=0.22.0
 tensorflow>=2.15.0
 torch>=2.2.0
 torchvision>=0.20.0
-
-# Transformers library
+tf-keras>=2.14.0
 transformers>=4.44.0
 
 # Visualization
